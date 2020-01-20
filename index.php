@@ -34,14 +34,32 @@ if(isset($_POST['login'])){
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <style>
+        .footer {
+            position: absolute;
+            bottom:0;
+            height: 20%;
+            width: 100%;
+        }
+        .loginside{
+            position: absolute;
+            right: 0;
+            width: 30%;
+            height: 100%;
+        }
+    </style>
     <title>My Messanger</title>
   </head>
   <body>
-    <div class="container">
+   <div>
+       <div><?php include('register.php') ?></div>
+   </div>
+    <div class="loginside">
         <div><?php include('logincontent.php')  ?></div>
     </div>
-    
+    <div class="footer">
+        <div><?php include('footer.php') ?></div>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
