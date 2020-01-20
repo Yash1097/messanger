@@ -1,27 +1,29 @@
 <?php
+$now = time();
+session_set_cookie_params(60*60*24*2,"/");
 session_start();
-if(isset($_SESSION['uname'])){
+if(isset($_SESSION['uname']) && ($_SESSION['expiry'] > $now) ){
     echo "<script>location.href='welcome.php'</script>";
-            echo session_id();
 }
-    if(isset($_POST['login'])){
-        
-        if(!isset($_SESSION['uname'])){
-            $_SESSION['uname'] = $_POST['username'];
-            $_SESSION['pass'] = $_POST['password'];
-            if(isset($_POST['logmein'])){
-                $expiry = time() +60*60*24*2;
-                setcookie('PHPSESSID',session_id(),$expiry);
-            }
-            echo "<script>location.href='welcome.php'</script>";
+if(isset($_POST['login'])){
+    if(isset($_POST['logmein'])){
+            $expiry = time() +60*60*24*2;
         }
-        else{
-            echo "<script>location.href='welcome.php'</script>";
-            echo session_id();
-        }
-        
+    else{
+        $expiry = time()+60*60*3;
     }
-
+    session_start();
+    if(!isset($_SESSION['uname'])){
+        $_SESSION['start']=time();
+        $_SESSION['expiry']= $expiry;
+        $_SESSION['uname'] = $_POST['username'];
+        $_SESSION['pass'] = $_POST['password'];
+        echo "<script>location.href='welcome.php'</script>";
+    }
+    else{
+        echo "<script>location.href='welcome.php'</script>";
+    }        
+}
 ?>
 
 <html lang="en">

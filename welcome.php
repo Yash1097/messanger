@@ -1,6 +1,7 @@
 <?php
-    session_start();
-    if(!isset($_SESSION['uname'])){
+session_start();
+$now = time();
+    if(!isset($_SESSION['uname']) || ($_SESSION['expiry'] < time()) ){
     echo "<script>location.href='index.php'</script>";
     }
     if(isset($_POST['logout'])){
