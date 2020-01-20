@@ -7,7 +7,7 @@
                 <form action="" method="post">
                    <div><h4>Contact Us</h4></div>
                     <div class="form-group">
-                        <input type="email" placeholder="Email" id="email" class="form-control" />
+                        <input type="email" placeholder="Email" id="femail" class="form-control" />
                     </div>
                     <div class="form-group">
                         <input type="Text" placeholder="Subject" id="subject" class="form-control" />
