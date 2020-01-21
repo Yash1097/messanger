@@ -10,18 +10,24 @@ include('connection.php');
             $email = $_POST['email'];
             $name = $_POST['name'];
             $phone = $_POST['phone'];
-            $query = 'SELECT email,username FROM users WHERE email = '. $email . 'AND username ='.$uname;
-            $result = mysqli_query($connect,$query);
-            if(mysqli_num_rows($result)>0){
-                echo "useralready exist";
+            $query = 'SELECT * FROM `users` WHERE email = "'. $email . '" AND username ="'.$uname.'"';
+            if($result = mysqli_query($connect,$query)){
+                if(mysqli_num_rows($result) > 0){
+                    echo "User already exist ";
+                    /*$row = mysqli_fetch_array($result);
+                    echo $row['phone'] ;*/
+                }
+                else{
+                    $query = "INSERT INTO users (username,password,email,name,phone ) VALUES ('$uname',MD5('$password'),'$email','$name',$phone)";
+                    if(mysqli_query($connect,$query)){
+                        echo "User Registerd !!";
+                    }else{
+                        echo "Something went Wrong !!";
+                    }
+                }
             }
             else{
-                $query = 'INSERT INTO users (username,password,email,name) VALUES ('.$uname.','.$pass.','.$email.','.$name.','.$phone.')';
-                if(mysqli_query($connect,$query)){
-                    echo "User Registerd !!";
-                }else{
-                    echo "Something went Wrong !!";
-                }
+                echo "wrong";
             }
         }
     }

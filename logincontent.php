@@ -1,3 +1,44 @@
+<?php 
+    if(isset($_POST['login'])){
+        include('connection.php');
+        $uname = $_POST['username'];
+        $pass = $_POST['password'];
+        $query = "SELECT * FROM users WHERE username='".$_POST['username']."' AND password='".md5($_POST['password'])."'";
+        if($result = mysqli_query($connect,$query)){
+                if(mysqli_num_rows($result) > 0){
+                    
+                    if(isset($_POST['logmein'])){
+                    $expiry = time() +60*60*24*2;
+                    }else{
+                        $expiry = time()+60*60*3;
+                    }
+                    session_set_cookie_params(60*60*24*2,"/");
+                    session_start();
+                    if(!isset($_SESSION['uname'])){
+                        $_SESSION['start']=time();
+                        $_SESSION['expiry']= $expiry;
+                        $_SESSION['uname'] = $_POST['username'];
+                        $_SESSION['pass'] = $_POST['password'];
+                        echo "<script>location.href='welcome.php'</script>";
+                    }else{
+                        echo "<script>location.href='welcome.php'</script>";
+                    }
+                }else{
+                    echo "<script>alert('login again');</script>";
+                    echo "<script>location.href='index.php'</script>";
+                }
+        }else{
+            echo "Wrong User!!";
+        }
+    }
+
+if(isset($_POST['login'])){
+           
+}
+
+
+
+?>
 <div class="bg-dark text-light p-3">
        <div><h4>LogIn</h4></div>
         <form action="" method="post">
