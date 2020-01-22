@@ -34,6 +34,16 @@ $now = time();
             #chatarea{
                 height: 100%;
             }
+            #chatarea{
+                float: right;
+                width: 70%;
+            }
+            #chat{
+                height: 90%;
+            }
+            #msgsend{
+                height: 15%;
+            }
     </style>
     <title>My Messanger</title>
   </head>

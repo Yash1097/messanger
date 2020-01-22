@@ -15,16 +15,33 @@
           </div>
         </div>
     </div>
-
     <div>
         
         <div class="text-light" id="users"></div>
         
     </div>
 </div>
-    <div class="bg-secondary" id="chatarea">
-         
+<div class="bg-secondary" id="chatarea">
+  <div class="container" id="chat"></div>
+   <div class="container" id="msgsend">
+       <div class="container">
+    <div>
+        <div id="chats"></div>
     </div>
+    <div>
+        <div class="input-group mb-3">
+         <div class="input-group-prepend">
+    <span class="input-group-text"><i class="fa fa-smile-o"></i></span>
+  </div>
+          <input type="text" class="form-control" placeholder="Search">
+          <div class="input-group-append">
+            <span class="input-group-text btn"><i class="fa fa-paper-plane"></i></span>
+          </div>
+        </div>
+    </div>
+</div>
+   </div>
+</div>
 <script>
 $(document).ready(function(){
     $.ajax({
