@@ -80,7 +80,7 @@ function fetch_user_chat_history($from_user_id, $to_user_id, $connect)
 
 function get_user_name($user_id, $connect)
 {
-	$query = "SELECT username FROM login WHERE user_id = '$user_id'";
+	$query = "SELECT username FROM users WHERE id = '$user_id'";
 	$result = mysqli_query($connect, $query);
 	while ($row = mysqli_fetch_assoc($result)) 
 	{
