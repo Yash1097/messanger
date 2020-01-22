@@ -1,7 +1,9 @@
 
     <div class="">
         <div class="row bg-dark text-light">
-           <div class="col-4">d</div>
+           <div class="col-4">
+           <?php  include('test.php') ?>
+           </div>
            <div class="col-4">d</div>
             <div class="col-4 bg-dark text-light p-3">
                 <form action="" method="post">

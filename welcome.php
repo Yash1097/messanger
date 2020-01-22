@@ -16,23 +16,28 @@ $now = time();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+    <link href="lib/css/emoji.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.css">
         <style>
         .userinfo{
             position: absolute;
             left: 0;
             border-right: 1px solid white;
             width: 30%;
-            height: 100%;
+            height:100%;
         }
         #profilepic:hover{
             opacity: 0.5;
         }
             #chatarea{
-                height: 100%;
+                height:100%;
             }
             #chatarea{
                 float: right;
@@ -42,7 +47,7 @@ $now = time();
                 height: 90%;
             }
             #msgsend{
-                height: 15%;
+                height:10%;
             }
     </style>
     <title>My Messanger</title>
