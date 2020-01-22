@@ -12,11 +12,11 @@
                     }else{
                         $expiry = time()+60*60*3;
                     }
-                    session_set_cookie_params(60*60*24*2,"/");
-                    session_start();
+                    $row = mysqli_fetch_assoc($result);
                     if(!isset($_SESSION['uname'])){
                         $_SESSION['start']=time();
                         $_SESSION['expiry']= $expiry;
+                        $_SESSION['user_id']=$row['id'];
                         $_SESSION['uname'] = $_POST['username'];
                         $_SESSION['pass'] = $_POST['password'];
                         echo "<script>location.href='welcome.php'</script>";
