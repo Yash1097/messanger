@@ -35,4 +35,4 @@
         </div>
    </div>
 </div>
-<script src="test.js" type="text/javascript"></script>
+<script src="action.js" type="text/javascript"></script>
