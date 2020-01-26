@@ -23,7 +23,6 @@ $now = time();
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="lib/css/emoji.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.css">
         <style>
         .userinfo{
@@ -36,23 +35,39 @@ $now = time();
         #profilepic:hover{
             opacity: 0.5;
         }
-            #chatarea{
-                height:100%;
-            }
-            #chatarea{
-                float: right;
-                width: 70%;
-            }
-            #chat{
+            .chat_display{
                 height: 90%;
+                overflow-y: scroll;
             }
-            #msgsend{
-                height:10%;
+            
+            
+            /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: lightgrey; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: grey; 
+}
+            button:hover{
+                cursor: pointer;
             }
     </style>
     <title>My Messanger</title>
   </head>
-  <body>
+  <body class="bg-dark">
    
    <div>
        <?php include('user.php'); ?>

@@ -18,7 +18,7 @@ function fetch_user_chat_history($from_user_id, $to_user_id, $connect)
 	";
 	$result = mysqli_query($connect, $query);
 	//$row = mysqli_fetch_assoc($result);
-	$output = '<ul class="list-unstyled">';
+	$output = '<div style="overflow:scroll;"><ul class="list-unstyled">';
 	while ($row = mysqli_fetch_assoc($result)) 
 	{
 		$user_name = '';
@@ -33,7 +33,7 @@ function fetch_user_chat_history($from_user_id, $to_user_id, $connect)
 			}
 			else
 			{
-				$chat_message = '<div align="right">'.$row['chat_message'].'</div>';
+				$chat_message = '<div align="right"><b>'.$row['chat_message'].'</b></div>';
 				$user_name = '<div align="right"><button type="button" class="btn btn-danger btn-xs remove_chat" id="'.$row['chat_message_id'].'">x</button>&nbsp;<b class="text-success" align="right">You</b></div>';
 			}
 			
@@ -50,7 +50,7 @@ function fetch_user_chat_history($from_user_id, $to_user_id, $connect)
 			}
 			else
 			{
-				$chat_message = '<div align="left">'.$row['chat_message'].'</div>';
+				$chat_message = '<div align="left"><b class="bg-warning p-2" style ="border:1px solid black;border-radius:20px;">'.$row['chat_message'].'</b></div>';
 			}
 			$user_name = '<b class="text-danger">'.get_user_name($row['from_user_id'], $connect).'</b>';
 			$dynamic_background = 'background-color:#ffffe6;';
@@ -66,7 +66,7 @@ function fetch_user_chat_history($from_user_id, $to_user_id, $connect)
 		</li>
 		';
 	}
-	$output .= '</ul>';
+	$output .= '</ul></div>';
 	$query = "
 	UPDATE message 
 	SET status = '0' 

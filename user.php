@@ -1,5 +1,5 @@
-
-<div class="container p-3 userinfo bg-dark text-light text-center">
+    <div class="row">
+  <div class="col-3 bg-dark text-light text-center p-4" style="border-right: 2px solid white;">
     <div>
        <div style="position:absolute;right:10px;">
            <form action="" method="post">
@@ -15,24 +15,15 @@
           </div>
         </div>
     </div>
-    <div>
-        
-        <div class="text-light" id="users"></div>
-        
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="overflow: auto; height: 300px;">
+      <a class="nav-link" id="yash" data-toggle="pill" href="#yoyo" role="tab" aria-controls="yoyo" aria-selected="false">Home</a>
     </div>
-</div>
-<div class="bg-secondary" id="chatarea">
-    <div class="container" id="chat"><div id="user_model_details"></div></div>
-    <div class="container" id="msgsend">
-        <div class="container">
-            <div>
-                <div id="chats">
-                    
-                </div>
-            </div>
-            <div>  
-            </div>
-        </div>
-   </div>
+  </div>
+  <div class="col-9 bg-dark">
+    <div class="tab-content" id="v-pills-tabContent" style="overflow-y: auto; height:550px;">
+        <img src="use.png">
+    </div>
+    <div id="inputarea"></div>
+  </div>
 </div>
 <script src="action.js" type="text/javascript"></script>
