@@ -5,27 +5,30 @@ $password = '';
 $database = 'chating';
 $connect = mysqli_connect($host,$user,$password,$database);
 
-
-function fetch_user_chat_history($from_user_id, $to_user_id, $connect)
+function fetch_user_chat_history($from_user_id, $to_user_id, $connect , $width)
 {
+    $width = (int)$width;
+    $wid = $width/2;
 	$query = "
 	SELECT * FROM message 
 	WHERE (from_user_id = '$from_user_id' 
 	AND to_user_id = '$to_user_id') 
 	OR (from_user_id = '$to_user_id' 
 	AND to_user_id = '$from_user_id') 
-	ORDER BY timestamp DESC
+	ORDER BY timestamp ASC
 	";
 	$result = mysqli_query($connect, $query);
 	//$row = mysqli_fetch_assoc($result);
-	$output = '<div style="overflow:scroll;"><ul class="list-unstyled">';
+	$output = '<div id="chatscroll" style="overflow:scroll;"><ul class="list-unstyled ">';
 	while ($row = mysqli_fetch_assoc($result)) 
 	{
+        $pos='';
 		$user_name = '';
-		$dynamic_background = '';
+        $str = $row['chat_message'];
 		$chat_message = '';
 		if($row["from_user_id"] == $from_user_id)
 		{
+            $pos = 'right';
 			if($row["status"] == '2')
 			{
 				$chat_message = '<em align="right">This message has been removed</em>';
@@ -33,37 +36,35 @@ function fetch_user_chat_history($from_user_id, $to_user_id, $connect)
 			}
 			else
 			{
-				$chat_message = '<div align="right"><b>'.$row['chat_message'].'</b></div>';
-				$user_name = '<div align="right"><button type="button" class="btn btn-danger btn-xs remove_chat" id="'.$row['chat_message_id'].'">x</button>&nbsp;<b class="text-success" align="right">You</b></div>';
+				$chat_message = '<div class="talk-bubble"><div class="talktext" style="text-align: right !important;"><p align="right" class="alert-success chatmsg">'.$str.'</p></div></div>';
+				$user_name = '<div align="right"><button type="button" style="color: red;" class="btn btn-xs remove_chat" id="'.$row['chat_message_id'].'">x</button>&nbsp;</div>';
 			}
 			
-            $chattime = '<div align="right">
+            $chattime = '<div class="text-muted" align="right">
 					       - <small><em>'.$row['timestamp'].'</em></small>
 				        </div>';
-			$dynamic_background = 'background-color:#ffe6e6;';
 		}
 		else
 		{
+            $pos = 'left';
 			if($row["status"] == '2')
 			{
 				$chat_message = '<em>This message has been removed</em>';
 			}
 			else
 			{
-				$chat_message = '<div align="left"><b class="bg-warning p-2" style ="border:1px solid black;border-radius:20px;">'.$row['chat_message'].'</b></div>';
+				$chat_message = '<div class="talk-bubble"><div class="talktext" style="text-align: left !important;" ><p class="alert-primary chatmsg">'.$str.'</p></div></div>';
 			}
-			$user_name = '<b class="text-danger">'.get_user_name($row['from_user_id'], $connect).'</b>';
-			$dynamic_background = 'background-color:#ffffe6;';
-            $chattime = '<div align="left">
+            $chattime = '<div class="text-muted" align="left">
 					- <small><em>'.$row['timestamp'].'</em></small>
 				</div>';
 		}
 		$output .= '
-		<li style="border-bottom:1px dotted #ccc;padding-top:8px; padding-left:8px; padding-right:8px;'.$dynamic_background.'">
-			<p>'.$user_name.' '.$chat_message.'
+		<div align = "'.$pos.'">
+			<p> '.$chat_message.'
             '.$chattime.'
 			</p>
-		</li>
+		</div>
 		';
 	}
 	$output .= '</ul></div>';

@@ -40,30 +40,48 @@ $now = time();
                 overflow-y: scroll;
             }
             
-            
             /* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
+            ::-webkit-scrollbar {
+              width: 10px;
+            }
 
-/* Track */
-::-webkit-scrollbar-track {
-  border-radius: 10px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: lightgrey; 
-  border-radius: 10px;
-}
+            /* Track */
+            ::-webkit-scrollbar-track {
+              border-radius: 10px;
+            }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: grey; 
-}
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+              background: lightgrey; 
+              border-radius: 10px;
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+              background: grey; 
+            }
             button:hover{
                 cursor: pointer;
             }
+            .chatmsg{
+                padding: 10px;
+                border: 1px solid ;
+                border-radius: 20px;
+            }
+            .talk-bubble {
+            display: inline-block;
+            /*position: relative !important;*/
+            max-width: 45% !important;
+            height: auto !important;
+        }
+        .talktext{
+            line-height: 1em !important;
+        }
+        .talktext p{
+          -webkit-margin-before: 0em !important;
+          -webkit-margin-after: 0em !important;
+        } 
+            
     </style>
     <title>My Messanger</title>
   </head>
