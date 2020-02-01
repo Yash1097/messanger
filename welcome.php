@@ -81,11 +81,15 @@ $now = time();
           -webkit-margin-before: 0em !important;
           -webkit-margin-after: 0em !important;
         } 
+            .navbar-icon:after{
+              content: '\2807';
+            }    
+
             
     </style>
     <title>My Messanger</title>
   </head>
-  <body class="bg-dark">
+  <body class="bg-light">
    
    <div>
        <?php include('user.php'); ?>

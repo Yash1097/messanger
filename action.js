@@ -1,12 +1,15 @@
 $(document).ready(function(){
     fetch_user();
-    console.log(document.getElementById('v-pills-tabContent').clientWidth);
+    
     setInterval(function(){
+        //fetch_user();
         //update_last_activity();
+        //console.log(document.getElementById('v-pills-tabContent').clientHeight);
 		update_chat_history_data();
 	}, 5000);
     
-   function fetch_user(){ $.ajax({
+   function fetch_user(){ 
+       $.ajax({
 			url:"fetch_user.php",
 			method:"POST",
 			success:function(data){
@@ -22,14 +25,15 @@ function make_chat_dialog_box(to_user_id, to_user_name)
         return modal_content;
 	}
 function createinputarea(to_user_id){
-    var inputstyle = '<div class="bg-secondary p-3"><div class="input-group"><input type="text" id="chat_message_'+to_user_id+'" class="form-control chat_message" placeholder="Type something here"><div class="input-group-append"><button type="button" name="send_chat" id="'+to_user_id+'" class="send_chat"><i class="fa fa-paper-plane"></i></button></div></div></div></div></div>';
+    var inputstyle = '<div class="bg-secondary p-3"><div class="input-group"><input type="text" id="chat_message_'+to_user_id+'" class="text-dark form-control chat_message" placeholder="Type something here"><div class="input-group-append"><button type="button" name="send_chat" id="'+to_user_id+'" class="send_chat"><i class="fa fa-paper-plane"></i></button></div></div></div></div></div>';
     document.getElementById('inputarea').innerHTML = inputstyle;
 }
 function scrolld () {
-        $('div,div,div,ul').animate({scrollTop: $(document).height()},0);
+        $('div,div,div,ul').animate({scrollTop: 100000000},0);
     }
 
 	$(document).on('click', '.nav-link', function(){
+        document.getElementById("chatbg").style.backgroundImage = "url('chat-bg.jpg')";
 		var to_user_id = $(this).data('touserid');
 		var to_user_name = $(this).data('tousername');
         document.getElementById('chatwith').innerHTML = '<div class="text-light ml-5"><h2><b>'+to_user_name+'</b></h2></div>';
@@ -38,12 +42,18 @@ function scrolld () {
 			pickerPosition:"top",
 			toneStyle: "bullet"
 		});
-        setTimeout(function(){ scrolld() }, 1000);
+        setTimeout(function(){
+            scrolld();
+            var list = document.getElementById(to_user_name);
+            if(list.childNodes[1])
+                list.removeChild(list.childNodes[1]);
+        }, 1000);
 	});
 
     
     	$(document).on('click', '.send_chat', function(){
 		var to_user_id = $(this).attr('id');
+        
 		var chat_message = $.trim($('#chat_message_'+to_user_id).val());
 		if(chat_message != '')
 		{
@@ -63,12 +73,15 @@ function scrolld () {
 		{
 			alert('Type something');
 		}
+            document.getElementById('chat_message_'+to_user_id).value = "";
 	});
     
     	function update_chat_history_data()
 	{
+            $('.nav-link').each(function(){
 			var to_user_id = $(this).data('touserid');
 			fetch_user_chat_history(to_user_id);
+		});
 	}
     
     function fetch_user_chat_history(to_user_id)
@@ -84,3 +97,18 @@ function scrolld () {
 			}
 		})
 	}
+	$(document).on('click', '.remove_chat', function(){
+		var chat_message_id = $(this).attr('id');
+		if(confirm("Are you sure you want to remove this chat?"))
+		{
+			$.ajax({
+				url:"remove_chat.php",
+				method:"POST",
+				data:{chat_message_id:chat_message_id},
+				success:function(data)
+				{
+					update_chat_history_data();
+				}
+			})
+		}
+	});
