@@ -41,11 +41,11 @@
 <script>
 function submitform(){
     var uname = $('#username').val();
-    var password = $('#password').val();
+    var password = document.getElementById('password').value;
     var name = $('#name').val();
     var email = $('#email').val();
     var phone = $('#phone').val();
-    console.log(phone);
+    console.log(password);
     $.ajax({
             url:'reg.php',
             method:'POST',

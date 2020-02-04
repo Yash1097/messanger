@@ -18,7 +18,7 @@ include('connection.php');
                     echo $row['phone'] ;*/
                 }
                 else{
-                    $query = "INSERT INTO users (username,password,email,name,phone ) VALUES ('$uname',MD5('$password'),'$email','$name',$phone)";
+                    $query = "INSERT INTO users (username,password,email,name,phone,image ) VALUES ('$uname',MD5('$password'),'$email','$name',$phone,'use.png')";
                     if(mysqli_query($connect,$query)){
                         echo "User Registerd !!";
                     }else{

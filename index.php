@@ -15,9 +15,14 @@ if(isset($_SESSION['uname']) && ($_SESSION['expiry'] > $now) ){
     
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
      <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.css">
+
     <style>
         .footer {
             position: absolute;
@@ -34,7 +39,7 @@ if(isset($_SESSION['uname']) && ($_SESSION['expiry'] > $now) ){
     </style>
     <title>My Messanger</title>
   </head>
-  <body>
+  <body class="bg-dark">
    <div>
        <div><?php include('register.php') ?></div>
    </div>
@@ -42,7 +47,26 @@ if(isset($_SESSION['uname']) && ($_SESSION['expiry'] > $now) ){
         <div><?php include('logincontent.php')  ?></div>
     </div>
     <div class="footer">
-        <div><?php include('footer.php') ?></div>
+            <div class="row bg-dark text-light">
+               <div class="col-4">
+
+               </div>
+               <div class="col-4"></div>
+                <div class="col-4 bg-dark text-light p-3">
+                    <form action="" method="post">
+                       <div><h4>Contact Us</h4></div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email" id="femail" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <input type="Text" placeholder="Subject" id="subject" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <textarea type="Text" style="height:20%;" placeholder="Message" id="msg" class="form-control"></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
     </div>
 
     <!-- Optional JavaScript -->
